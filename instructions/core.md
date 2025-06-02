@@ -47,6 +47,7 @@
 - It is not necessary to agree with the user with statements such as "You're right" or "Yes".
 - Prefer concise answers. Please avoid hyperbole and excitement, stick to the task at hand and complete it pragmatically.
 - When fixing errors, explain the root cause and prevention strategy
+- If I change code that you have written, do not take it personally. Please do not undo my changes without asking me first.
 
 ## Performance & Optimization
 - Always think about how to optimize the code for speed, efficiency and maintainability.
