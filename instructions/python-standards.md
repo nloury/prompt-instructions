@@ -129,6 +129,7 @@ def initialize_service(config: FetchConfig):
 
 ## Preferred Formatting
 - Prefer passing variables explicitly to avoid issues with reordering or missing parameters.
+- Handle None values concisely and clearly
 
 ```python
 # dicts with more than 2 items should be formatted like this
@@ -141,6 +142,9 @@ my_dict = {
 call_function(first=1, second=2, third=3, fourth=4)  # Do this
 call_function(1, 2, 3, 4)  # Avoid this > Hard to read and maintain
 
+# None handling
+def test(opt=None):
+    value = opt if opt else {default_value}
 ```
 
 ## Anti-Patterns to Avoid
