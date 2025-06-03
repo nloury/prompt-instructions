@@ -41,6 +41,7 @@ example_str + ' complete'  # Avoid this
 
 ## Documentation
 - Always use doc strings to clarify the purpose of functions and classes
+- Concise and clear docstrings. For simple / transparent functions and classes, do not need to specify args, returns, raises, etc
 - Use comments to describe what blocks of code are doing and the purpose
 - Include type hints in docstrings for complex return types
 - Document API endpoints with request/response examples
