@@ -4,6 +4,7 @@
 - Use explicit typing wherever possible
 - Use build in types, do not use `typing` module unless necessary (dict[str] is ok, but not typing.Dict[str])
 - Use | for union types (e.g., `str | None`)
+- List explicit types accepted instead of typing.Any unless absolutely necessary. If using Any, please call this out with a rationale for doing so.
 - Optional can be inferred from the default value of None, so avoid using Optional
 - Use single quotes (') unless double quote is necessary
 - Prefer fstrings for string formatting and concatenation
