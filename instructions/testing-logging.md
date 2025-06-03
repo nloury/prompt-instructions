@@ -1,10 +1,8 @@
 # Testing & Logging
 
 ## Testing Requirements
-- Write unit tests for all public methods
-- Aim for 80%+ code coverage
+- No need to create unit tests unless asked for. If you are asked to create unit tests, please include edge case testing (empty inputs, boundary values)
 - Use descriptive test names: `test_validate_user_input_with_invalid_email_raises_value_error`
-- Include edge case testing (empty inputs, boundary values)
 
 ### Test Structure
 ```python
@@ -32,7 +30,7 @@ class TestExampleClass:
 ### Logger Setup
 ```python
 # Instance logger
-logger = CustomLogging('{logger_file_name}')
+logger = CustomLogging('{logger_file_name}')  # no need to specify level when initializing
 
 # Class logger
 self._logger = logger if logger else CustomLogging('{logger_file_name}')
