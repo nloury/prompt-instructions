@@ -38,6 +38,11 @@ self._logger = logger if logger else CustomLogging('{logger_file_name}')
 
 ### Logging Patterns
 ```python
+# Intialize logger
+def test(logger: CustomLogging=None):
+    logger = logger if logger else CustomLogging('{logger_file_name}')  # do this
+    logger = logger if logger else CustomLogging('{logger_file_name}', level='debug_verbose')  # never include level in the intialization
+    
 # Starting processes
 self._logger.add_log(override_message='Starting {process message}', level='debug_verbose')
 
