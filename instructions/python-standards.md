@@ -2,15 +2,33 @@
 
 ## Type Annotations
 - Use explicit typing wherever possible
+- Use build in types, do not use `typing` module unless necessary (dict[str] is ok, but not typing.Dict[str])
+- Use | for union types (e.g., `str | None`)
+- Optional can be inferred from the default value of None, so avoid using Optional
 - Use single quotes (') unless double quote is necessary
-- Prefer fstrings like f'{var_str} complete'
-- Use Union types for multiple possible return types
+- Prefer fstrings for string formatting and concatenation
 
 ```python
+# Explicit typing using built in types
+def example(name: str, age: int | None = None) -> dict[str, str | int]:
+    """Use this typing style"""
+    return {'name': name, 'age': age}
+
+# Avoid using the typing module unless necessary
+from typing import Union, Optional, Dict
+def example(name: Union[str, None], age: Optional[int] = None) -> Dict[str, Union[str, int]]:
+    """Do not use this typing style"""
+    return {'name': name, 'age': age}
+
 # Prefer single quotes
 print('Use single quotes for strings')  # Do this
 print(f"Use double quotes when {test_dict['key']} necessary")  # This is ok
 print("Unnecessary double quotes")  # Avoid this
+
+# Use fstrings for string formatting
+example_str = 'process'
+f'{example_str} complete'  # Do this
+example_str + ' complete'  # Avoid this
 ```
 
 ## Naming Conventions
