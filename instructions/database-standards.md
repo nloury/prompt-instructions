@@ -9,7 +9,6 @@
 - Use read replicas for heavy analytical queries when available
 
 ## Query Standards
-- Always capitalize operators like SELECT, FROM, CASE
 - Always explicitly reference schema. If unsure of schema please clarify.
 - Always use an alias when querying more than 1 table
 - Use batch writes when possible
@@ -17,6 +16,11 @@
 - When using queries to load data, use the column name after loaded (for the variable name or for output columns). If you think it should be renamed then ask me.
 - When passing data/values to query, prefer explicitly named values and passing a dict instead of implicit %s
 - Use CTE tables for complex queries to improve readability and maintainability (e.g. avoid retyping/recalculating intermediate values)
+
+## Query Formatting
+- Always capitalize operators like SELECT, FROM, CASE
+- Always use new line for each column/clause
+- Use indentation for nested queries and CTEs
 
 ## Usage Examples
 
@@ -60,6 +64,7 @@ db_execution_list.append(sql_insert)
 ```python
 from {project}.utils.db.read import query_sql
 
+# Format like this
 sql_query = """
     SELECT
         id,
