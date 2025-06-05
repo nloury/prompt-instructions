@@ -6,7 +6,7 @@
 - Use | for union types (e.g., `str | None`)
 - List explicit types accepted instead of typing.Any unless absolutely necessary. If using Any, please call this out with a rationale for doing so.
 - Optional can be inferred from the default value of None, so avoid using Optional
-- Use single quotes (') unless double quote is necessary
+- Use single quotes (') unless double quote is necessary. Use double quotes for strings that contain single quotes to avoid escaping.
 - Prefer fstrings for string formatting and concatenation
 
 ```python
@@ -23,7 +23,7 @@ def example(name: Union[str, None], age: Optional[int] = None) -> Dict[str, Unio
 
 # Prefer single quotes
 print('Use single quotes for strings')  # Do this
-print(f"Use double quotes when {test_dict['key']} necessary")  # This is ok
+print(f"Use double quotes when {test_dict['key']} main string contains single quotes")  # This is ok
 print("Unnecessary double quotes")  # Avoid this
 
 # Use fstrings for string formatting
@@ -148,7 +148,7 @@ def initialize_service(config: FetchConfig):
 ```
 
 ## Preferred Formatting
-- Prefer passing variables explicitly to avoid issues with reordering or missing parameters.
+- Prefer passing variables explicitly (instead of positional) to avoid issues with reordering or missing parameters.
 - Handle None values concisely and clearly
 
 ```python
@@ -159,8 +159,8 @@ my_dict = {
 }
 
 # Explicit passing of variables
-call_function(first=1, second=2, third=3, fourth=4)  # Do this
-call_function(1, 2, 3, 4)  # Avoid this > Hard to read and maintain
+call_function(first=1, second=2, third=3, fourth=4)  # Do this, name each parameter for clarity
+call_function(1, 2, 3, 4)  # Avoid this > Hard to read and maintain when passing positional arguments
 
 # None handling
 def test(opt=None):

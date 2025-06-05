@@ -21,6 +21,7 @@
 - Extract repeated code into reusable functions
 - Share common logic through proper abstraction
 - Maintain single sources of truth
+- Make use of base classes and inheritance to avoid code duplication
 
 ## Preserve Existing Code
 - Keep unrelated code or functionalities. Pay attention to preserving existing structures.
@@ -88,6 +89,12 @@ def process_data(self):
     # any futher processing of result, like setting accessor key
     dict_key = 'internal_id'  # or other key that uniquely identifies the result
     return {r[dict_key]: r for r in result if r is not None}
+
+class Base:
+    # Some reusable code
+
+class Derived(Base):
+    # Extension of base class for specific functionality
 ```
 
 ## Web scraping
