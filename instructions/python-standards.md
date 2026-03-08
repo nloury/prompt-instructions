@@ -1,5 +1,44 @@
 # Python Standards
 
+## Helper Details
+- Prefer explicit helper classes and Enums to streamline inputs (e.g. instead of requiring user to remember input semantics, use Enums or a helper dataclass)
+- Have helper classes perform basic data validation, expose output names, etc
+```python
+# use this as an example of a helper enum class
+class CalcType(str, Enum):
+    """Different types of calculation where future allows future start signed deals"""
+    STANDARD = 'standard'
+    FUTURE = 'future'  # allows future starting ARR deals and includes undelivered transactional deals to reflect what is "in the bank" to be recognized from passage of time
+    NORMALIZED = 'normalized'  # future + deals signed after end of period that were committed before (e.g. committed in December but signed in Jan due to holidays)
+
+    def output_name(self, verbose: bool = False) -> str:
+        if self == CalcType.STANDARD:
+            return 'Standard' if verbose else 'Std.'
+        if self == CalcType.FUTURE:
+            return 'Future'
+        if self == CalcType.NORMALIZED:
+            return 'Normalized' if verbose else 'Norm.'
+        return self.value.replace('_', ' ').title()
+
+# use this as an example of a helper dataclass that does some basic validation or type conversion
+@dataclass
+class MonthlyAccrual:
+    """Data structure to hold monthly accrual amounts"""
+    base: Decimal
+    total: Decimal
+    discount: Decimal = None
+
+    def __post_init__(self):
+        """Set discount as difference to avoid any issues - total is most important"""
+        if self.discount is None:
+            self.discount = set_decimal(self.total - self.base)  # base > total
+
+    def validate(self) -> bool:
+        """Validate that total = base + discount"""
+        calculated = self.base + self.discount
+        return is_zero_decimal(self.total - calculated)
+```
+
 ## Type Annotations
 - Use explicit typing wherever possible
 - Use build in types, do not use `typing` module unless necessary (dict[str] is ok, but not typing.Dict[str])

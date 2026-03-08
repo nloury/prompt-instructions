@@ -16,6 +16,8 @@
 - When using queries to load data, use the column name after loaded (for the variable name or for output columns). If you think it should be renamed then ask me.
 - When passing data/values to query, prefer explicitly named values and passing a dict instead of implicit %s
 - Use CTE tables for complex queries to improve readability and maintainability (e.g. avoid retyping/recalculating intermediate values)
+- Do not add extra spaces to align alias names, etc. Only use single spaces.
+- Capitalize all SQL commands or operators like AS, ON, JOIN, CURRENT_DATE, etc
 
 ## Query Formatting
 - Always capitalize operators like SELECT, FROM, CASE
