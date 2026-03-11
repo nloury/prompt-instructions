@@ -113,6 +113,7 @@ except Exception as e:
 - Avoid relying on **kwargs or **args unless absolutely necessary. Use explicit parameters instead.
 - Prefer private methods like self._ unless necessary to expose methods publicly.
 - Create base classes where that can help avoid code duplication and improve maintainability.
+- Methods should be in descending order of dependency (so the first function called comes first, etc) so that it is easy to start at the __init__ and read what the class is doing in order
 
 ```python
 from {project}.utils.log import CustomLogging
